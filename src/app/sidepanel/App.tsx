@@ -3,6 +3,7 @@ import Header from "@/components/layout/Header";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import Input from "@/components/ui/Input";
+import CurrentVideoCard from "@/features/current-video/components/CurrentVideoCard";
 
 export default function App() {
   return (
@@ -11,21 +12,9 @@ export default function App() {
         <Header />
 
         <main className="flex flex-1 items-center justify-center p-6">
-          <Card className="w-full max-w-md space-y-5">
-            <div>
-              <h2 className="text-lg font-semibold text-[var(--foreground)]">
-                Current Video
-              </h2>
-
-              <p className="mt-2 text-sm text-[var(--muted-foreground)]">
-                Waiting for YouTube video...
-              </p>
-            </div>
-
-            <Input placeholder="Write a quick note..." />
-
-            <Button className="w-full">Save Note</Button>
-          </Card>
+          <div className="w-full max-w-md">
+            <CurrentVideoCard />
+          </div>
         </main>
       </div>
     </AppShell>
