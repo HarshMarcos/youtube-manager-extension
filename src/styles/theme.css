@@ -1,0 +1,28 @@
+:root {
+  /* Backgrounds */
+  --background: #09090b;
+  --surface: #111113;
+  --card: #18181b;
+
+  /* Borders */
+  --border: #27272a;
+
+  /* Text */
+  --foreground: #fafafa;
+  --muted-foreground: #a1a1aa;
+
+  /* Brand */
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+
+  /* States */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+
+  /* Radius */
+  --radius: 16px;
+
+  /* Animation */
+  --transition: 200ms ease;
+}
