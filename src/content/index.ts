@@ -60,5 +60,23 @@ chrome.runtime.onMessage.addListener((message, _, sendResponse) => {
     sendResponse(getVideoInfo());
   }
 
+  if (message.type === "GET_CURRENT_TIME") {
+    const video = document.querySelector("video");
+
+    console.log("Current Time:", video?.currentTime);
+
+    sendResponse(video?.currentTime ?? 0);
+  }
+
+  if (message.type === "SEEK_TO_TIME") {
+    const video = document.querySelector("video");
+
+    if (video) {
+      video.currentTime = message.payload;
+    }
+
+    sendResponse(true);
+  }
+
   return true; // Keep the message channel open for asynchronous response
 });

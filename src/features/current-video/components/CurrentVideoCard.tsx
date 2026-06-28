@@ -1,6 +1,8 @@
 import Card from "@/components/ui/Card";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
+import QuickNoteForm from "@/features/notes/components/QuickNoteForm";
+import NotesList from "@/features/notes/components/NotesList";
 
 import { useCurrentVideo } from "../hooks/useCurrentVideo";
 
@@ -53,9 +55,9 @@ export default function CurrentVideoCard() {
         </p>
       </div>
 
-      <Input placeholder="Write a quick note..." />
+      <QuickNoteForm videoId={video.id} />
 
-      <Button className="w-full">Save Note</Button>
+      <NotesList videoId={video.id} />
     </Card>
   );
 }

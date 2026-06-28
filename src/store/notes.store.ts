@@ -3,6 +3,7 @@ import { create } from "zustand";
 import { noteService } from "@/features/notes/services/note.service";
 import type { SaveNoteRequest } from "@/features/notes/dto/saveNote.dto";
 import type { Note } from "@/features/notes/types/note.types";
+import type { UpdateNoteRequest } from "@/features/notes/dto/updateNote.dto";
 
 interface NotesStore {
   notes: Note[];
@@ -14,6 +15,8 @@ interface NotesStore {
   saveNote: (request: SaveNoteRequest) => Promise<void>;
 
   deleteNote: (id: string) => Promise<void>;
+
+  updateNote: (request: UpdateNoteRequest) => Promise<void>;
 }
 
 export const useNotesStore = create<NotesStore>((set) => ({
@@ -45,6 +48,22 @@ export const useNotesStore = create<NotesStore>((set) => ({
 
     set((state) => ({
       notes: state.notes.filter((note) => note.id !== id),
+    }));
+  },
+
+  updateNote: async (request) => {
+    await noteService.updateNote(request);
+
+    set((state) => ({
+      notes: state.notes.map((note) =>
+        note.id === request.id
+          ? {
+              ...note,
+              content: request.content,
+              updatedAt: Date.now(),
+            }
+          : note,
+      ),
     }));
   },
 }));

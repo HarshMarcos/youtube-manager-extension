@@ -17,6 +17,10 @@ export class NoteRepository {
   async update(note: Note): Promise<void> {
     await db.notes.put(note);
   }
+
+  async findById(id: string): Promise<Note | undefined> {
+    return db.notes.get(id);
+  }
 }
 
 export const noteRepository = new NoteRepository();
